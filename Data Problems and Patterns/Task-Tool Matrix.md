@@ -4,26 +4,25 @@
 **Power BI**: use PowerQuery Editor (Table Tools >> Transform Data)
 **Alteryx**: use only built-in tools
 
-| Task                      | R                     | Python                           | Excel            | Power BI | Alteryx |
-| ------------------------- | --------------------- | -------------------------------- | ---------------- | -------- | ------- |
-| Inner Join                | `dplyr::inner_join()` | `df.join(how='inner')`           |                  |          |         |
-| Left Join                 | `dplyr::left_join()`  | `df.join(how='left')`            |                  |          |         |
-| Right Join                | `dplyr::right_join()` | `df.join(how='right')`           |                  |          |         |
-| Full Join                 | `dplyr::full_join()`  | `df.join(how='outer')`           |                  |          |         |
-| Union                     | `dplyr:bind_rows()`   | `df.concat() or df1.append(df2)` |                  |          |         |
-| Remove Duplicates         |                       |                                  |                  |          |         |
-| Profiling                 |                       |                                  |                  |          |         |
-| Normalization (z-value)   |                       |                                  |                  |          |         |
-| Calculated Columns        |                       |                                  |                  |          |         |
-| Pivot (to wide)           |                       |                                  |                  |          |         |
-| Unpivot (to long)         |                       |                                  |                  |          |         |
-| Missing Values - Drop     |                       |                                  |                  |          |         |
-| Missing Values - Impute   |                       |                                  |                  |          |         |
-| Identifying Outliers      |                       |                                  |                  |          |         |
-| Find and Replace          |                       |                                  |                  |          |         |
-| Split Column              |                       |                                  |                  |          |         |
-| Extract Value from Column |                       |                                  |                  |          |         |
-| Extract Date Part         |                       |                                  |                  |          |         |
-| Concatenating Text        | `stringr::str_c`      | `+` or `%`                       | `=CONCATENATE()` |          |         |
-| Rounding Values           |                       |                                  |                  |          |         |
-|                           |                       |                                  |                  |          |         |
+| Task                      | R                                      | Python                                        | Excel                 | Power BI                                                                                      | Alteryx |
+| ------------------------- | -------------------------------------- | --------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------- | ------- |
+| Inner Join                | `dplyr::inner_join()`                  | `df.join(how='inner')`                        |                       | Merge Data                                                                                    |         |
+| Left Join                 | `dplyr::left_join()`                   | `df.join(how='left')`                         |                       | Merge Data                                                                                    |         |
+| Right Join                | `dplyr::right_join()`                  | `df.join(how='right')`                        |                       | Merge Data                                                                                    |         |
+| Full Join                 | `dplyr::full_join()`                   | `df.join(how='outer')`                        |                       | Merge Data                                                                                    |         |
+| Union                     | `dplyr:bind_rows()`                    | `df.concat() or df1.append(df2)`              |                       | Append Data                                                                                   |         |
+| Remove Duplicates         | `dplyr::distinct()`                    | `df.drop_duplicates()`                        | Remove Duplicates     | Remove Rows >> Remove Duplicates                                                              |         |
+| Profiling                 |                                        |                                               | Data Analysis Toolkit | Data View (?)                                                                                 |         |
+| Normalization (z-value)   | `dplyr::mutate(mean/sd)`               | `df.apply(lambda)` or `StandardScaler()`      | `=MEAN()/STDEV.P()`   | [DAX `CALCULATE()`](https://dataveld.com/2017/07/29/using-dax-to-normalize-data-in-power-bi/) |         |
+| Calculated Columns        | `dplyr::mutate()`                      | `df['new column'] = ...`                      | formula in new column | New Column                                                                                    |         |
+| Pivot (to wide)           | `tidyr::pivot_wider()`                 | `pd.pivot()`                                  | -                     | Pivot                                                                                         |         |
+| Unpivot (to long)         | `tidyr::pivot_longer()`                | `pd.melt()`                                   | -                     | Unpivot                                                                                       |         |
+| Missing Values - Drop     | `tidyr::drop_na()`                     | `df.dropna()`                                 | Sort, Remove Rows     | Remove Rows                                                                                   |         |
+| Missing Values - Impute   | `tidyr::replace_na()`                  | `df.fillna()`                                 | Sort, insert as block | Find and Replace                                                                              |         |
+| Identifying Outliers      |                                        |                                               |                       |                                                                                               |         |
+| Find and Replace ??       |                                        |                                               |                       |                                                                                               |         |
+| Split Column              | `stringr::str_split()`                 | `str.split()`                                 | Text to Columns       | Split Column                                                                                  |         |
+| Extract Value from Column | `stringr::str_extract()`               | ``re.search()`????                       | `` | Flash Fill            | Column From Examples                                                                          |         |
+| Extract Date Part         | `lubridate::...`                       | `df['Date'].dt.date` or `.month`              | `=MONTH()`            | Add Column >> Date                                                                            |         |
+| Concatenating Text        | `stringr::str_c`                       | `+` or `%`                                    | `=CONCATENATE()`      |                                                                                               |         |
+| Rounding Values           | `dplyr::mutate(across(c(..), round, 2` | `df.round()`                                  | `=ROUND()`            |                                                                                               |         |
